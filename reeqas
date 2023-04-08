@@ -10,7 +10,8 @@ local ESP = {
     TeamColor = true,
     Thickness = 2,
     Distance = true,
-    AttachShift = 1,
+    AttachShift = 1, 
+    Outline = true,
     TeamMates = true,
     Players = true,
     
@@ -293,14 +294,14 @@ function ESP:Add(obj, options)
 		Text = box.Name,
 		Color = box.Color,
 		Center = true,
-		Outline = true,
+		Outline = ESP.Outline,
         Size = 19,
         Visible = self.Enabled and self.Names
 	})
 	box.Components["Distance"] = Draw("Text", {
 		Color = box.Color,
 		Center = true,
-		Outline = true,
+		Outline = ESP.Outline,
         Size = 19,
         Visible = self.Enabled and self.Names
 	})
