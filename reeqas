@@ -1,3 +1,4 @@
+_G.ShowDistance = true 
 --Settings--
 local ESP = {
     Enabled = false,
@@ -9,7 +10,6 @@ local ESP = {
     Names = true,
     TeamColor = true,
     Thickness = 2,
-    Distance = true,
     AttachShift = 1, 
     Outline = true,
     TeamMates = true,
@@ -239,15 +239,7 @@ function boxBase:Update()
         self.Components.Name.Visible = false
         self.Components.Distance.Visible = false
     end
-    if ESP.Distance then 
- self.Components.Distance.Visible = true
-            self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
-            self.Components.Distance.Text = "[ "..math.floor((cam.CFrame.p - cf.p).magnitude) .." ]"
-            self.Components.Distance.Color = color
-else 
- self.Components.Distance.Visible = false
 
-end 
     if ESP.Tracers then
         local TorsoPos, Vis6 = WorldToViewportPoint(cam, locs.Torso.p)
 
@@ -263,7 +255,15 @@ end
         self.Components.Tracer.Visible = false
     end
 end
+    if _G.ShowDistance then 
+ self.Components.Distance.Visible = true
+            self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
+            self.Components.Distance.Text = "[ "..math.floor((cam.CFrame.p - cf.p).magnitude) .." ]"
+            self.Components.Distance.Color = color
+else 
+ self.Components.Distance.Visible = false
 
+end 
 function ESP:Add(obj, options)
     if not obj.Parent and not options.RenderInNil then
         return warn(obj, "has no parent")
