@@ -1,5 +1,5 @@
-_G.ShowDistance = true 
---Settings--
+
+
 local ESP = {
     Enabled = false,
     Boxes = true,
@@ -9,6 +9,7 @@ local ESP = {
     FaceCamera = false,
     Names = true,
     TeamColor = true,
+_G.ShowDistance = true,
     Thickness = 2,
     AttachShift = 1, 
     Outline = true,
