@@ -256,7 +256,7 @@ function boxBase:Update()
         self.Components.Tracer.Visible = false
     end
 end
-    if _G.ShowDistance then 
+    if ESP._G.ShowDistance then 
  self.Components.Distance.Visible = true
             self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
             self.Components.Distance.Text = "[ "..math.floor((cam.CFrame.p - cf.p).magnitude) .." ]"
