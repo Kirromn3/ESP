@@ -142,7 +142,6 @@ end
             coroutine.wrap(NewListener)(v)
         end
     end
-end
 
 local boxBase = {}
 boxBase.__index = boxBase
