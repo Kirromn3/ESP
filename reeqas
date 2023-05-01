@@ -234,7 +234,7 @@ function boxBase:Update()
             self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y)
             self.Components.Name.Text = self.Name
             self.Components.Name.Color = color
-            
+            self.Components.Name.Size = ESP.TextSize
           
         else
             self.Components.Name.Visible = false
