@@ -130,6 +130,20 @@ function ESP:AddObjectListener(parent, options)
     end
 end
 
+
+    if options.Recursive then
+        parent.DescendantAdded:Connect(NewListener)
+        for i,v in pairs(parent:GetDescendants()) do
+            coroutine.wrap(NewListener)(v)
+        end
+    else
+        parent.ChildAdded:Connect(NewListener)
+        for i,v in pairs(parent:GetChildren()) do
+            coroutine.wrap(NewListener)(v)
+        end
+    end
+end
+
 local boxBase = {}
 boxBase.__index = boxBase
 
@@ -311,7 +325,7 @@ function ESP:Add(obj, options)
 		Color = box.Color,
 		Center = true,
 		Outline = true,
-        Size = 19,
+        Size = ESP.TextSize,
         Visible = self.Enabled and self.Names
 	})
 	
