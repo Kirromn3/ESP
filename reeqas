@@ -90,11 +90,14 @@ function ESP:Toggle(bool)
         end
     end
 end
-
+function ESP:Remove(obj)
+    if self.Objects[obj] then 
+        self.Objects[obj]:Remove()
+        end 
+    end 
 function ESP:GetBox(obj)
     return self.Objects[obj]
 end
-
 function ESP:AddObjectListener(parent, options)
     local function NewListener(c)
         if type(options.Type) == "string" and c:IsA(options.Type) or options.Type == nil then
@@ -131,17 +134,7 @@ function ESP:AddObjectListener(parent, options)
 end
 
 
-    if options.Recursive then
-        parent.DescendantAdded:Connect(NewListener)
-        for i,v in pairs(parent:GetDescendants()) do
-            coroutine.wrap(NewListener)(v)
-        end
-    else
-        parent.ChildAdded:Connect(NewListener)
-        for i,v in pairs(parent:GetChildren()) do
-            coroutine.wrap(NewListener)(v)
-        end
-    end
+    
 
 local boxBase = {}
 boxBase.__index = boxBase
