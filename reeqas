@@ -154,9 +154,7 @@ function boxBase:Remove()
         self.Components[i] = nil
     end
 end
-function ESP:Remove(object)
-   ESP.Objects[object]:Remove()
-end
+
 function boxBase:Update()
     if not self.PrimaryPart then
         --warn("not supposed to print", self.Object)
