@@ -15,7 +15,6 @@ local ESP = {
     connections = {},
     containers = {},
     settings = {
-color = Color3.fromRGB(0,255,0)
         distance = true,
         health = true,
         tracers = true,
@@ -60,7 +59,7 @@ function ESP:Add(object, settings)
     local displayLabel = Drawing.new("Text")
     local tracer = Drawing.new("Line")
 
-    local color = ESP.settings.color or (objectIsPlayer(object) and object.Team) and object.TeamColor.Color or Color3.fromRGB(255, 255, 255)
+    local color = color or (objectIsPlayer(object) and object.Team) and object.TeamColor.Color or Color3.fromRGB(255, 255, 255)
 
     displayLabel.Center = true
     displayLabel.Outline = true
