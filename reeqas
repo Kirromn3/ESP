@@ -6,9 +6,9 @@ local ESP = {
 	BoxSize = Vector3.new(4,6,0),
     Color = Color3.fromRGB(255, 170, 0),
     FaceCamera = false,
+    Distance = true, 
     Names = true,
     TeamColor = true,
-    Distance = true,
     Thickness = 2,
     AttachShift = 1,
     TeamMates = true,
@@ -90,14 +90,11 @@ function ESP:Toggle(bool)
         end
     end
 end
-function ESP:Remove(obj)
-    if self.Objects[obj] then 
-        self.Objects[obj]:Remove()
-        end 
-    end 
+
 function ESP:GetBox(obj)
     return self.Objects[obj]
 end
+
 function ESP:AddObjectListener(parent, options)
     local function NewListener(c)
         if type(options.Type) == "string" and c:IsA(options.Type) or options.Type == nil then
@@ -132,9 +129,6 @@ function ESP:AddObjectListener(parent, options)
         end
     end
 end
-
-
-    
 
 local boxBase = {}
 boxBase.__index = boxBase
@@ -234,8 +228,9 @@ function boxBase:Update()
             self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y)
             self.Components.Name.Text = self.Name
             self.Components.Name.Color = color
-            
-          
+                      self.Components.Name.Size = ESP.TextSize
+      
+
         else
             self.Components.Name.Visible = false
         end
@@ -246,12 +241,12 @@ function boxBase:Update()
         local TagPos, Vis5 = WorldToViewportPoint(cam, locs.TagPos.p)
         
         if Vis5 then
- 
-            self.Components.Distance.Visible = true
+               self.Components.Distance.Visible = true
             self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
             self.Components.Distance.Text = "[ "..math.floor((cam.CFrame.p - cf.p).magnitude) .." ]"
             self.Components.Distance.Color = color
-            self.Components.Distance.Size = ESP.TextSize
+                                  self.Components.Distance.Size = ESP.TextSize
+
         else
             self.Components.Distance.Visible = false
         end
