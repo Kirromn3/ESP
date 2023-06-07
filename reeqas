@@ -275,10 +275,10 @@ function ESP:Add(obj, options)
         return warn(obj, "has no parent")
     end
 function ESP:Remove(obj)
- if ESP.Objects[obj] then 
-ESP.Objects[obj]:Destroy()
-end 
-    end
+    if self.Objects[obj] then 
+        self.Objects[obj]:Remove()
+        end 
+    end 
 
     local box = setmetatable({
         Name = options.Name or obj.Name,
