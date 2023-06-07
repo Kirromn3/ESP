@@ -274,6 +274,11 @@ function ESP:Add(obj, options)
     if not obj.Parent and not options.RenderInNil then
         return warn(obj, "has no parent")
     end
+function ESP:Remove(obj)
+ if ESP.Objects[obj] then 
+ESP.Objects[obj]:Destroy()
+end 
+    end
 
     local box = setmetatable({
         Name = options.Name or obj.Name,
