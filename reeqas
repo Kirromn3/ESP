@@ -8,9 +8,11 @@ local ESP = {
     FaceCamera = false,
     Distance = true, 
     Names = true,
+    Health = true,
     TeamColor = true,
     Thickness = 2,
     AttachShift = 1,
+    
     TeamMates = true,
     Players = true,
     TextSize = 16,
@@ -185,6 +187,7 @@ function boxBase:Update()
 
     --calculations--
     local cf = self.PrimaryPart.CFrame
+    local cf2 = self.c
     if ESP.FaceCamera then
         cf = CFrame.new(cf.p, cam.CFrame.p)
     end
@@ -243,7 +246,13 @@ function boxBase:Update()
         if Vis5 then
                self.Components.Distance.Visible = true
             self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y + 14)
+            if ESP.Health then
+                            self.Components.Distance.Text = "[ "..math.floor((cam.CFrame.p - cf.p).magnitude) .." ] ["..cf.Parent.Humanoid.Health.." ]"
+
+                else 
             self.Components.Distance.Text = "[ "..math.floor((cam.CFrame.p - cf.p).magnitude) .." ]"
+        
+            end
             self.Components.Distance.Color = color
                                   self.Components.Distance.Size = ESP.TextSize
 
